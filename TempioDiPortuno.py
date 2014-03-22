@@ -29,7 +29,7 @@ base2 = T([1,2])([9.6,1.2])(CUBOID([32.8,17.6]))
 
 
 
-plinto =  CUBOID([2.8,2.8])
+plinto =  CUBOID([2.8,2.8,0.1])
 xPlinti1 = T([1,2])([9.6,1.2])(STRUCT([plinto,T(1)(4.8)]*7)) 
 xPlinti2 = T([1,2])([9.6,16])(STRUCT([plinto,T(1)(4.8)]*7))
 
@@ -39,7 +39,7 @@ yPlinti2 = T([1,2])([38.4,1.2])(STRUCT([plinto,T(2)(4.8)]*3))
 
 plinti = (COLOR([1,0.49,0.31])) (SKELETON(1)(STRUCT([xPlinti1,xPlinti2,yPlinto1porta,yPlinto2porta,yPlinti2])))
 
-colonna = CYLINDER([1,0]) (20)
+colonna = CYLINDER([1,1]) (20)
 
 
 colonnex1 = T([1,2])([11,2.6])(STRUCT([colonna,T(1)(4.8)]*7))
@@ -69,6 +69,8 @@ rettangolino = MKPOL([verticiRet, celleRet,None])
 
 
 baseGiusta = DIFFERENCE([baseQuasiGiusta, rettangolino])
+
+baseGiusta = PROD([baseGiusta,Q(1)])
 
 baseGiustaColorata = (COLOR([1,0.64,0])) (SKELETON(1)(STRUCT([baseGiusta])))
 
@@ -102,7 +104,6 @@ e = (MK) ([41.2,0.6,2.8])
 f = (MK) ([41.2,19.4,2.8])
 
 provaTettoCompleto = JOIN([a,b,c,d,e,f])
-
 
 
 tettoPunta = (COLOR([0.76,0.69,0.57])) (SKELETON(1)(STRUCT([provaTettoCompleto,tettoAlto])))
