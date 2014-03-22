@@ -1,3 +1,4 @@
+#Visione in 3D
 from pyplasm import *
 
 vertici = [[9.6,0],[43.6,0],[43.6,20],[9.6,20]]
@@ -41,15 +42,12 @@ scalino12 = PROD([scalino12,Q(7.2)])
 
 
 
-#scalini = (COLOR(YELLOW)) (SKELETON(1)(STRUCT([scalino1,scalino2,scalino3,scalino4,scalino5,scalino6,scalino7,
-	#scalino8,scalino9,scalino10,scalino11,scalino12])))
-
 scalini = (COLOR([1,0.64,0])) (STRUCT([scalino1,scalino2,scalino3,scalino4,scalino5,scalino6,scalino7,
 	scalino8,scalino9,scalino10,scalino11,scalino12]))
 
 
 
-base2 = T([1,2])([9.6,1.2])(CUBOID([32.8,17.6]))
+base2 = T([1,2])([9.6,1.2])(CUBOID([31.6,17.6]))
 
 
 

@@ -1,9 +1,13 @@
+#Visione in 2.5D con e senza SKELETON 
+
 from pyplasm import *
 
 vertici = [[9.6,0],[43.6,0],[43.6,20],[9.6,20]]
 celle = [[1,2,3,4]]
 base =  MKPOL([vertici,celle,None])
 base = (COLOR([0.76,0.69,0.57])) (SKELETON(1)(STRUCT([base])))
+
+baseNS = (COLOR([0.76,0.69,0.57])) (STRUCT([base]))
 
 
 scalino = CUBOID([0.6,14.8])
@@ -21,10 +25,17 @@ scalino10 = T([1,2])([7.8,2.8])(scalino)
 scalino11 = T([1,2])([8.4,2.8])(scalino)
 scalino12 = T([1,2])([9,2.8])(scalino)
 
+
+
 scalini = (COLOR([1,0.64,0])) (SKELETON(1)(STRUCT([scalino1,scalino2,scalino3,scalino4,scalino5,scalino6,scalino7,
 	scalino8,scalino9,scalino10,scalino11,scalino12])))
 
-base2 = T([1,2])([9.6,1.2])(CUBOID([32.8,17.6]))
+scaliniNS = (COLOR([1,0.64,0])) (STRUCT([scalino1,scalino2,scalino3,scalino4,scalino5,scalino6,scalino7,
+	scalino8,scalino9,scalino10,scalino11,scalino12]))
+
+
+
+base2 = T([1,2])([9.6,1.2])(CUBOID([31.6,17.6]))
 
 
 
@@ -39,6 +50,8 @@ yPlinti2 = T([1,2])([38.4,1.2])(STRUCT([plinto,T(2)(4.8)]*3))
 
 plinti = (COLOR([1,0.49,0.31])) (SKELETON(1)(STRUCT([xPlinti1,xPlinti2,yPlinto1porta,yPlinto2porta,yPlinti2])))
 
+plintiNS = (COLOR([1,0.49,0.31])) (STRUCT([xPlinti1,xPlinti2,yPlinto1porta,yPlinto2porta,yPlinti2]))
+
 colonna = CYLINDER([1,1]) (20)
 
 
@@ -50,6 +63,7 @@ ycolonna2porta = T([1,2])([11,13])(colonna)
 colonney2 = T([1,2])([39.8,7.4])(STRUCT([colonna,T(2)(4.8)]*2))
 
 colonne = (COLOR([1, 0.38, 0.27])) (SKELETON(1)(STRUCT([colonnex1,colonnex2,ycolonna1porta,ycolonna2porta,colonney2])))
+colonneNS = (COLOR([1, 0.38, 0.27])) (STRUCT([colonnex1,colonnex2,ycolonna1porta,ycolonna2porta,colonney2]))
 
 verticiCCcompleta = [[20.6,2.6],[39.8,2.6],[39.8,17.4],[20.6,17.4]]
 celleCCcompleta = [[1,2,3,4]]
@@ -73,6 +87,7 @@ baseGiusta = DIFFERENCE([baseQuasiGiusta, rettangolino])
 baseGiusta = PROD([baseGiusta,Q(1)])
 
 baseGiustaColorata = (COLOR([1,0.64,0])) (SKELETON(1)(STRUCT([baseGiusta])))
+baseGiustaColorataNS = (COLOR([1,0.64,0])) (STRUCT([baseGiusta]))
 
 
 
@@ -83,6 +98,8 @@ baseIntorno = T(1)(9.6)(CUBOID([34,20]))
 baseIntornoVera = DIFFERENCE([baseIntorno, base2])
 
 baseIntornoVeraColorata = (COLOR([0.76,0.69,0.57])) (SKELETON(1)(STRUCT([baseIntornoVera])))
+
+baseIntornoVeraColorataNS = (COLOR([0.76,0.69,0.57])) (STRUCT([baseIntornoVera]))
 
 
 
@@ -108,11 +125,15 @@ provaTettoCompleto = JOIN([a,b,c,d,e,f])
 
 tettoPunta = (COLOR([0.76,0.69,0.57])) (SKELETON(1)(STRUCT([provaTettoCompleto,tettoAlto])))
 
+tettoPuntaNS = (COLOR([0.76,0.69,0.57])) (STRUCT([provaTettoCompleto,tettoAlto]))
+
 
 
 porta = T([1,2])([20.6,7.8])(CUBOID([1.6,4.4]))
 
-portaColorata = (COLOR([0.80,0.52,0.24]))(porta)
+portaColorata = (COLOR([0.80,0.52,0.24]))(SKELETON(1)(porta))
+
+portaColorataNS = (COLOR([0.80,0.52,0.24]))(porta)
 
 
 
@@ -120,6 +141,7 @@ portaColorata = (COLOR([0.80,0.52,0.24]))(porta)
 
 
 VIEW((STRUCT([base,portaColorata,tettoPunta,scalini,plinti,colonne,baseGiustaColorata,baseIntornoVeraColorata])))
+VIEW((STRUCT([baseNS,portaColorataNS,tettoPuntaNS,scaliniNS,plintiNS,colonneNS,baseGiustaColorataNS,baseIntornoVeraColorataNS])))
 
 
 
