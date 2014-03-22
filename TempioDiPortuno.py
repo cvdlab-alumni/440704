@@ -90,6 +90,36 @@ VIEW(baseIntorno)
 VIEW(baseIntornoVera)
 
 
+tetto = T([1,2])([9.6,1.2])(CUBOID([32.8,17.6])) #come la base2
+
+tettoAlto = PROD([tetto, Q(3)])
+
+#punti al centro alti
+a = (MK)([11,10,8]) 
+b = (MK)([42.4,10,8])
+
+#punti esterni
+c = (MK) ([9.6,0.6,2.8])
+d = (MK) ([9.6,19.4,2.8])
+
+e = (MK) ([42.4,0.6,2.8])
+f = (MK) ([42.4,19.4,2.8])
+
+provaTettoCompleto = JOIN([a,b,c,d,e,f])
+
+VIEW(STRUCT([provaTettoCompleto,tettoAlto]))
+
+tettoPunta = (COLOR(PURPLE)) (SKELETON(1)(STRUCT([provaTettoCompleto,tettoAlto])))
+
+#proviamo la porta
+
+porta = T([1,2])([20.6,7.8])(CUBOID([1.6,4.4]))
+
+portaColorata = (COLOR(BROWN))(porta)
+
+
+
+
 
 
 
@@ -102,7 +132,7 @@ VIEW(baseIntornoVera)
 #VIEW(STRUCT([colonnex1,baseGiustaAlt]))
 
 
-VIEW((STRUCT([scalini,plinti,colonne,baseGiustaColorata,baseIntornoVeraColorata])))
+VIEW((STRUCT([portaColorata,tettoPunta,scalini,plinti,colonne,baseGiustaColorata,baseIntornoVeraColorata])))
 
 #VIEW(STRUCT([baseGiusta]))
 
