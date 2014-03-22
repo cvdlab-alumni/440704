@@ -77,7 +77,7 @@ baseGiustaColorata = (COLOR(GREEN)) (SKELETON(1)(STRUCT([baseGiusta])))
 
 
 
-baseIntorno = T([1,2])([9.6,0.6]) (CUBOID([33.4,18.6]))
+baseIntorno = T(1)(9.6)(CUBOID([34,20]))
 
 
 baseIntornoVera = DIFFERENCE([baseIntorno, base2])
@@ -90,20 +90,20 @@ VIEW(baseIntorno)
 VIEW(baseIntornoVera)
 
 
-tetto = T([1,2])([9.6,1.2])(CUBOID([32.8,17.6])) #come la base2
+tetto = T([1,2])([9.6,1.2])(CUBOID([31.6,17.6])) #come la base2
 
 tettoAlto = PROD([tetto, Q(3)])
 
 #punti al centro alti
-a = (MK)([11,10,8]) 
-b = (MK)([42.4,10,8])
+a = (MK)([9.6,10,8]) 
+b = (MK)([41.2,10,8])
 
 #punti esterni
 c = (MK) ([9.6,0.6,2.8])
 d = (MK) ([9.6,19.4,2.8])
 
-e = (MK) ([42.4,0.6,2.8])
-f = (MK) ([42.4,19.4,2.8])
+e = (MK) ([41.2,0.6,2.8])
+f = (MK) ([41.2,19.4,2.8])
 
 provaTettoCompleto = JOIN([a,b,c,d,e,f])
 
