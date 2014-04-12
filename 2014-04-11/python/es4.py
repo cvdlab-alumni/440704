@@ -310,12 +310,14 @@ alberi8 = T([1,2])([-495,260])(STRUCT([albero,T(1)(30)]*17))
 alberi10 = T([1,2])([-495,300])(STRUCT([albero,T(1)(30)]*17))
 
 alberiConfine1 = T([1,2])([-400,355])(STRUCT([albero,T(2)(30)]*5))
-abeti1 = T([1,2])([-400,385])(STRUCT([abete,T(1)(33)]*14))
-abeti2 = T([1,2])([-400,415])(STRUCT([abete,T(1)(33)]*14))
-abeti3 = T([1,2])([-400,445])(STRUCT([abete,T(1)(33)]*14))
-abeti4 = T([1,2])([-400,475])(STRUCT([abete,T(1)(33)]*14))
-alberoConfine2 = T([1,2])([-400,355])(STRUCT([albero,T(1)(33)]*14))
-alberoConfine3 = T([1,2])([55,350])(STRUCT([albero,T(2)(-30)]*4))
+abeti1 = T([1,2])([-400,385])(STRUCT([abete,T(1)(33)]*21))
+abeti2 = T([1,2])([-400,415])(STRUCT([abete,T(1)(33)]*21))
+abeti3 = T([1,2])([-400,445])(STRUCT([abete,T(1)(33)]*21))
+abeti4 = T([1,2])([-400,475])(STRUCT([abete,T(1)(33)]*21))
+alberoConfine2 = T([1,2])([-400,355])(STRUCT([albero,T(1)(33)]*21))
+alberoConfine3 = T([1,2])([55,320])(STRUCT([albero,T(2)(-30)]*3))
+alberoConfine3Continuo1 = T([1,2])([55,320])(STRUCT([albero,T(1)(30)]*8))
+alberoConfine3Continuo2 = T([1,2])([55,290])(STRUCT([albero,T(1)(30)]*8))
 alberoConfine4 = T([1,2])([55,260])(STRUCT([albero,T(1)(30)]*15))
 
 
@@ -323,7 +325,7 @@ alberoConfine4 = T([1,2])([55,260])(STRUCT([albero,T(1)(30)]*15))
 
 
 tuttiAlberi = STRUCT([alberi,alberi4,alberi6,alberi8,alberi10,alberiConfine1,alberoConfine2,alberoConfine3,alberoConfine4,abeti1,
-				abeti2,abeti3,abeti4])
+				abeti2,abeti3,abeti4,alberoConfine3Continuo1,alberoConfine3Continuo2])
 
 luce = COLOR([1,1,0])(T(3)(9.9)(SPHERE(1.5)([60,60])))
 palo = COLOR([0.58,0.58,0.58])(CYLINDER([0.5,10])(50))
