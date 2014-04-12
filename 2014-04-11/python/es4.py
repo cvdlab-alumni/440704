@@ -350,6 +350,35 @@ luceT = T ([1,2,3]) ([-6,-0.5,20.5]) (lucetta)
 pezzoLuceT = T([1,2,3])([-6,-0.5,21])(pezzoLuce)
 
 
+palo = COLOR([0.76,0.70,0.5])(CYLINDER([0.5,13])(50))
+palo2 = T(2)(6)(palo)
+palo3 = T(1)(8)(palo)
+palo4 = T([1,2])([8,6])(palo)
+tronco = COLOR([0.76,0.70,0.5]) (CUBOID([1,6,2]))
+tronco1 = T([1,3])([-0.5,11])(tronco)
+tronco2 = T([1,3])([7.5,11])(tronco)
+troncoCentrale = COLOR([0.76,0.70,0.5])(CUBOID([8,2,2]))
+troncoCentraleT = T([2,3])([2,11])(troncoCentrale)
+baseSedile = COLOR([0.92,0.70,0.37])(CUBOID([2,2,0.5]))
+poggiaSchiena = COLOR([0.92,0.70,0.37])(CUBOID([2,2,0.5]))
+poggiaSchienaR = R([2,3])(PI/2)(poggiaSchiena)
+poggiaSchienaT = T([1,2,3])([3,2,3])(poggiaSchienaR)
+baseSedileT = T([1,2,3])([3,2,3])(baseSedile)
+
+aPunto = (MK)([0,3,11])
+bPunto = (MK)([7.5,3,11])
+cPunto = (MK) ([3,2,4.5])
+dPunto = (MK) ([5,2,4.5])
+corda1 = COLOR([0.76,0.70,0.5])(JOIN([aPunto,cPunto]))
+corda2 = COLOR([0.76,0.70,0.5])(JOIN([bPunto,dPunto]))
+
+
+altalena = STRUCT([palo,palo2,palo3,palo4,tronco1,tronco2,troncoCentraleT,baseSedileT,poggiaSchienaT,corda1,corda2])
+
+altalene = T([1,2])([0,100])(STRUCT([altalena,T(1)(30)]*2))
+
+
+
 lampione = STRUCT([paloLampione,paloTrasversoRT,pezzoLuceT,luceT])
 lampioneFinale1 = R([1,2])(PI/2)(lampione)
 
@@ -422,11 +451,13 @@ simboloRM3T = T([1,2,3])([300,280,2])(simboloRM3S)
 
 
 
+
+
 VIEW(STRUCT([pianoGenerale1,pianoGenerale2,pianoGenerale3,pianoGenerale4,
 		nuovoTempioDiPortuno,edificiDestra,edificiSinistra,stradaPrincipale,stradaPiccolaS,stradaPiccolaD,
 		primoBloccoT,secondoBloccoT,punta,vetrateT,orologioTraslato,cancelloTraslato,stradaCongiuntaT,stradaFinaleT,
 		costruzioneTetto,costruzione,fiumeCompleto,tuttiSentieri,
-		tuttiAlberi,tuttiLampioncini,tuttiLampioni,panchinaPiazzata,panchine1,panchine2,simboloRM3T]))
+		tuttiAlberi,tuttiLampioncini,tuttiLampioni,panchinaPiazzata,panchine1,panchine2,simboloRM3T,altalene]))
 
 
 
