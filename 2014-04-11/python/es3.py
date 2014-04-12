@@ -153,8 +153,8 @@ tempioDiPortuno = STRUCT([base,portaColorata,tettoPunta,scalini,plinti,colonne,b
 #Da qui gli edifici
 
 pianoGenerale1 = COLOR([0.01,0.75,0.23]) (CUBOID([500,500]))
-pianoGenerale2 = COLOR([0.01,0.75,0,23]) (CUBOID([500,-500]))
-pianoGenerale3 = COLOR([0.01,0.75,0,23]) (CUBOID([-500,-500]))
+pianoGenerale2 = COLOR([0.01,0.75,0,23]) (CUBOID([500,-100]))
+pianoGenerale3 = COLOR([0.01,0.75,0,23]) (CUBOID([-500,-100]))
 pianoGenerale4 = COLOR([0.01,0.75,0,23]) (CUBOID([-500,500]))
 
 edificio1 = COLOR([0.80,0.50,0.20]) (CUBOID([24,30,35]))
@@ -195,6 +195,12 @@ stradaPrincipale = T([1,2])([-500,-25])(strada1)
 strada2  = COLOR(BROWN)(CUBOID([200,15]))
 stradaPiccolaS = T([1,2])([-50,35])(strada2)
 stradaPiccolaD = T([1,2])([-50,-25])(strada2)
+
+stradaCongiunta = COLOR(BROWN)(CUBOID([15,150]))
+stradaCongiuntaT = T([1,2])([150,-25])(stradaCongiunta)
+
+stradaFinale = COLOR(BROWN)(CUBOID([350,20]))
+stradaFinaleT = T([1,2])([150,105])(stradaFinale)
 
 
 primoBlocco = COLOR([0.82,0.41,0.12])(CUBOID([40,50,90]))
@@ -241,19 +247,42 @@ cancelloTraslato = T(1)(200)(cancello)
 
 
 
+baseCasa = CUBOID([100,40,40])
+pianoSopra = CUBOID([100,40,2])
+porta = COLOR([0.85,0.74,0.67])(CUBOID([20,0,14]))
+portaT = T([1,2])([345,50])(porta)
+finestrella = COLOR([0.67,0.80,0.94])(CUBOID([40,0,10]))
+finestrellaT = T([1,2,3])([335,50,25])(finestrella)
+
+baseCasaT = COLOR([1,0.84,0])(T ([1,2])([300,10])(baseCasa))
+pianoSopraT = T ([1,2,3])([300,10,40])(pianoSopra)
+
+puntoAlto = (MK) ([350,30,60])
+costruzione = STRUCT([baseCasaT,portaT,finestrellaT])
+costruzioneTetto = COLOR([0.75,0.25,0])(JOIN([puntoAlto,pianoSopraT]))
 
 
+nuovoTempioDiPortuno = T(2)(-5) (S([1,2,3])([1.7,1.7,1.7])(tempioDiPortuno))
 
+#fiume
 
+fiume = COLOR([0,0.5,1])(CUBOID([100,200]))
+fiumeT = T([1,2])([-500,300])(fiume)
+fiume2 = COLOR([0,0.5,1])(CUBOID([500,50]))
+fiume2T = T([1,2])([-500,300])(fiume2)
+fiume3 = COLOR([0,0.5,1])(CUBOID([50,150]))
+fiume3T = T([1,2])([0,200])(fiume3)
+fiume4 = COLOR([0,0.5,1])(CUBOID([500,50]))
+fiume4T = T([1,2])([0,200])(fiume4)
 
-
-
+fiumeCompleto = STRUCT([fiumeT,fiume2T,fiume3T,fiume4T])
 
 
 
 VIEW(STRUCT([pianoGenerale1,pianoGenerale2,pianoGenerale3,pianoGenerale4,
-		tempioDiPortuno,edificiDestra,edificiSinistra,stradaPrincipale,stradaPiccolaS,stradaPiccolaD,
-		primoBloccoT,secondoBloccoT,punta,vetrateT,orologioTraslato,cancelloTraslato]))
+		nuovoTempioDiPortuno,edificiDestra,edificiSinistra,stradaPrincipale,stradaPiccolaS,stradaPiccolaD,
+		primoBloccoT,secondoBloccoT,punta,vetrateT,orologioTraslato,cancelloTraslato,stradaCongiuntaT,stradaFinaleT,
+		costruzioneTetto,costruzione,fiumeCompleto]))
 
 
 
