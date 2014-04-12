@@ -376,6 +376,44 @@ panchine1 = T([1,2])([-450,120])(STRUCT([panchinaPiccola,T(1)(50)]*8))
 panchine2 = T([1,2])([-450,150])(STRUCT([panchinaPiccola,T(1)(50)]*8))
 
 
+strutturaRM3 = (CUBOID([2,50]))
+strutturaRMreplica = PROD([strutturaRM3,QUOTE([2,-2]*10)])
+strutturaBianca = CUBOID([2,50])
+strutturaRMBiancaReplica = PROD([strutturaBianca,QUOTE([-2,2]*10)])
+strutturaTotale = STRUCT([strutturaRMreplica])
+baseArco = CUBOID([2,25,15])
+baseArcoT = T(2)(12.5)(baseArco)
+arco = JOIN(AA(MK)(CIRCLE_POINTS(12.5,60)))
+arco2 = JOIN(AA(MK)(CIRCLE_POINTS(12.5,60)))
+arcoR = R([1,3])(PI*3/2)(arco)
+arco2R = R([1,3])(PI*3/2)(arco2)
+arcoT = T([1,2,3])([2,25,15])(arcoR)
+arco2T = T([2,3])([25,15])(arco2R)
+arcoIntero = JOIN([arcoT,arco2T])
+arcoCompleto = JOIN([arcoIntero,baseArcoT])
+strutturaBiancaCompleta = DIFFERENCE([strutturaRMBiancaReplica,arcoCompleto])
+quasiSimbolo = COLOR([0.07,0.039,0.56])(DIFFERENCE([strutturaTotale,arcoCompleto]))
+simboloSenzaTriangolo = STRUCT([quasiSimbolo,strutturaBiancaCompleta])
+
+
+punto1base = (MK)([2,17.5,0])
+punto2base = (MK)([2,32.5,0])
+punto1alto = (MK)([2,25,18])
+punto3base = (MK)([0,17.5,0])
+punto4base = (MK)([0,32.5,0])
+punto2alto = (MK)([0,25,18])
+
+triangolo1 = JOIN([punto1base,punto2base,punto1alto])
+triangolo2 = JOIN([punto3base,punto4base,punto2alto])
+
+triangolo = COLOR([0.07,0.039,0.56])(JOIN([triangolo1,triangolo2]))
+simboloRM3 = STRUCT([triangolo,simboloSenzaTriangolo])
+
+
+
+simboloRM3R = R([1,3])(PI*3/2)(simboloRM3)
+simboloRM3S = S([1,2,3])([4,4,4])(simboloRM3R)
+simboloRM3T = T([1,2,3])([300,280,2])(simboloRM3S)
 
 
 
@@ -386,7 +424,7 @@ VIEW(STRUCT([pianoGenerale1,pianoGenerale2,pianoGenerale3,pianoGenerale4,
 		nuovoTempioDiPortuno,edificiDestra,edificiSinistra,stradaPrincipale,stradaPiccolaS,stradaPiccolaD,
 		primoBloccoT,secondoBloccoT,punta,vetrateT,orologioTraslato,cancelloTraslato,stradaCongiuntaT,stradaFinaleT,
 		costruzioneTetto,costruzione,fiumeCompleto,tuttiSentieri,
-		tuttiAlberi,tuttiLampioncini,tuttiLampioni,panchinaPiazzata,panchine1,panchine2]))
+		tuttiAlberi,tuttiLampioncini,tuttiLampioni,panchinaPiazzata,panchine1,panchine2,simboloRM3T]))
 
 
 
