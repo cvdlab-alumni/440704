@@ -374,7 +374,7 @@ corda2 = COLOR([0.76,0.70,0.5])(JOIN([bPunto,dPunto]))
 
 
 altalena = STRUCT([palo,palo2,palo3,palo4,tronco1,tronco2,troncoCentraleT,baseSedileT,poggiaSchienaT,corda1,corda2])
-
+VIEW(altalena)
 altalene = T([1,2])([0,100])(STRUCT([altalena,T(1)(30)]*2))
 
 
@@ -476,6 +476,8 @@ fiore3 = T([1,2,3])([0.5,0.5,5])(fioreC)
 fiore4 = T([1,2,3])([1,0.5,5])(fiore)
 fiore5 = T([1,2,3])([0.5,1,5])(fiore)
 contenitore = STRUCT([vasoVero,gambo,fiore1,fiore2,fiore3,fiore4,fiore5])
+
+VIEW(contenitore)
 
 
 contenitori1 = T([1,2])([200,-50])(STRUCT([contenitore,T(1)(-20)]*14))
