@@ -155,4 +155,9 @@ portaColorata = (COLOR([0.80,0.52,0.24]))(SKELETON(1)(STRUCT([porta])))
 
 
 VIEW((STRUCT([base,portaColorata,tettoPunta,scalini,plinti,colonne,baseGiustaColorata,baseIntornoVeraColorata])))
+plinti = (COLOR([1,0.49,0.31])) (STRUCT([xPlinti1,xPlinti2,yPlinto1porta,yPlinto2porta,yPlinti2]))
+colonne = (COLOR([1, 0.38, 0.27])) (STRUCT([colonnex1,colonnex2,ycolonna1porta,ycolonna2porta,colonney2]))
+tettoPunta = (COLOR([0.76,0.69,0.57]))(STRUCT([provaTettoCompleto,tettoAlto]))
+tettoPunta = (COLOR([0.76,0.69,0.57])) (STRUCT([provaTettoCompleto,tettoAlto]))
+VIEW((STRUCT([base,portaColorata,tettoPunta,scalini,plinti,colonne,baseIntornoVeraColorata])))
 
