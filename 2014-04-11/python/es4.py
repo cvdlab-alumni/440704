@@ -1,4 +1,7 @@
-#Modelli di alcuni edifici vicini
+#esercizio 4 per il completamento dell'esercizio 3
+
+
+
 
 from pyplasm import *
 
@@ -178,9 +181,6 @@ palazzo = STRUCT([edificio1,finestreFrontali1,finestreFrontali2,finestreLaterali
 		finestreLateraliD2,finestreDietro1,finestreDietro2,portone1])
 
 
-VIEW(STRUCT([edificio1,finestreFrontali1,finestreFrontali2,finestreLateraliS1,finestreLateraliS2,finestreLateraliD1,finestreLateraliD2,
-				finestreDietro1,finestreDietro2,portone1]))
-
 
 palazzoRuotato = R([1,2])(PI)(palazzo)
 
@@ -286,13 +286,107 @@ sentieroEdificio = T([1,2])([353,50])(CUBOID([2,55]))
 
 tuttiSentieri = STRUCT([sentieri,sentieri2,sentieroTempio,sentieroBingBang,sentieroEdificio])
 
+
+
+#DA QUI SI COMINCIANO AD INSERIRE NUOVI OGGETTI
+
+troncoAbete = COLOR([0.4,0.26,0.13])(CYLINDER([2,22])(50))
+circonferenza = JOIN(AA(MK)(CIRCLE_POINTS(8,60)))
+circonferenzaT = T(3)(10)(circonferenza)
+puntoAbete = (MK)([0,0,30])
+chiomaAbete = COLOR([0.09,0.45,0.27])(JOIN([circonferenzaT,puntoAbete]))
+abete = STRUCT([chiomaAbete,troncoAbete])
+
+
+
+chioma = COLOR([0.33,0.4,0.2])(T(3)(17.9)(SPHERE(8)([60,60])))
+tronco = COLOR([0.4,0.26,0.13])(CYLINDER([2,18])(50))
+
+albero = STRUCT([tronco,chioma])
+alberi = T([1,2])([-495,180])(STRUCT([albero,T(2)(40)]*4))
+alberi4 = T([1,2])([-495,180])(STRUCT([albero,T(1)(30)]*33))
+alberi6 = T([1,2])([-495,220])(STRUCT([albero,T(1)(30)]*17))
+alberi8 = T([1,2])([-495,260])(STRUCT([albero,T(1)(30)]*17))
+alberi10 = T([1,2])([-495,300])(STRUCT([albero,T(1)(30)]*17))
+
+alberiConfine1 = T([1,2])([-400,355])(STRUCT([albero,T(2)(30)]*5))
+abeti1 = T([1,2])([-400,385])(STRUCT([abete,T(1)(33)]*14))
+abeti2 = T([1,2])([-400,415])(STRUCT([abete,T(1)(33)]*14))
+abeti3 = T([1,2])([-400,445])(STRUCT([abete,T(1)(33)]*14))
+abeti4 = T([1,2])([-400,475])(STRUCT([abete,T(1)(33)]*14))
+alberoConfine2 = T([1,2])([-400,355])(STRUCT([albero,T(1)(33)]*14))
+alberoConfine3 = T([1,2])([55,350])(STRUCT([albero,T(2)(-30)]*4))
+alberoConfine4 = T([1,2])([55,260])(STRUCT([albero,T(1)(30)]*15))
+
+
+
+
+
+tuttiAlberi = STRUCT([alberi,alberi4,alberi6,alberi8,alberi10,alberiConfine1,alberoConfine2,alberoConfine3,alberoConfine4,abeti1,
+				abeti2,abeti3,abeti4])
+
+luce = COLOR([1,1,0])(T(3)(9.9)(SPHERE(1.5)([60,60])))
+palo = COLOR([0.58,0.58,0.58])(CYLINDER([0.5,10])(50))
+
+lampioncino = STRUCT([luce,palo])
+lampioncini1 = T(2)(55)(STRUCT([lampioncino,T(1)(20)]*8))
+lampioncini2 = T([1,2])([140,55])(STRUCT([lampioncino,T(2)(20)]*5))
+lampioncini3 = T([1,2])([140,135])(STRUCT([lampioncino,T(1)(30)]*12))
+lampioncini4 = T(2)(-30)(STRUCT([lampioncino,T(1)(20)]*9))
+lampioncini5 = T([1,2])([170,100])(STRUCT([lampioncino,T(1)(30)]*11))
+lampioncini6 = T([1,2])([170,100])(STRUCT([lampioncino,T(2)(-20)]*3))
+tuttiLampioncini = STRUCT([lampioncini1,lampioncini2,lampioncini3,lampioncini4,lampioncini5,lampioncini6])
+
+
+paloLampione = CYLINDER([0.5,20])(50)
+paloTrasverso = CYLINDER([0.5,5])(50)
+paloTrasversoR = R([1,3])(PI/6)(paloTrasverso)
+paloTrasversoRT = T(3)(18)(paloTrasversoR)
+pezzoLuce = CUBOID([4,1,1])
+lucetta = COLOR(YELLOW)(CUBOID([4,1,0.5]))
+luceT = T ([1,2,3]) ([-6,-0.5,20.5]) (lucetta)
+pezzoLuceT = T([1,2,3])([-6,-0.5,21])(pezzoLuce)
+
+
+lampione = STRUCT([paloLampione,paloTrasversoRT,pezzoLuceT,luceT])
+lampioneFinale1 = R([1,2])(PI/2)(lampione)
+
+lampioni1 = T([1,2])([-100,50])(STRUCT([lampioneFinale1,T(1)(-50)]*8))
+lampioneFinale2 = R([1,2])(PI*3/2)(lampione)
+
+lampioni2 = T([1,2])([-100,-25])(STRUCT([lampioneFinale2,T(1)(-50)]*8))
+
+tuttiLampioni = STRUCT([lampioni1,lampioni2])
+
+
+
+
+gamba1 = CUBOID([6,2,3])
+gamba2 = T(2)(10)(CUBOID([6,2,3]))
+base = T(3)(3)(CUBOID([6,12,1]))
+schienale = T(3)(4)(CUBOID([1,12,5]))
+
+panchina = STRUCT([gamba1,gamba2,base,schienale])
+panchinaPiccola = S([1,2,3])([0.5,0.5,0.5])(panchina)
+
+
+
+panchinaPiazzata = T([1,2])([-450,150])(STRUCT([panchinaPiccola,T(2)(-30)]*2))
+panchine1 = T([1,2])([-450,120])(STRUCT([panchinaPiccola,T(1)(50)]*8))
+panchine2 = T([1,2])([-450,150])(STRUCT([panchinaPiccola,T(1)(50)]*8))
+
+
+
+
+
+
+
+
 VIEW(STRUCT([pianoGenerale1,pianoGenerale2,pianoGenerale3,pianoGenerale4,
 		nuovoTempioDiPortuno,edificiDestra,edificiSinistra,stradaPrincipale,stradaPiccolaS,stradaPiccolaD,
 		primoBloccoT,secondoBloccoT,punta,vetrateT,orologioTraslato,cancelloTraslato,stradaCongiuntaT,stradaFinaleT,
-		costruzioneTetto,costruzione,fiumeCompleto,tuttiSentieri]))
-
-
-
+		costruzioneTetto,costruzione,fiumeCompleto,tuttiSentieri,
+		tuttiAlberi,tuttiLampioncini,tuttiLampioni,panchinaPiazzata,panchine1,panchine2]))
 
 
 
