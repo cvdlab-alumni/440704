@@ -448,6 +448,42 @@ simboloRM3T = T([1,2,3])([300,280,2])(simboloRM3S)
 
 
 
+vaso = COLOR([0.94,0.86,0.51])(CYLINDER([1.5,3])(50))
+vasoPerDiff = COLOR([0.4,0.26,0.15])(CYLINDER([1.2,3])(50))
+vasoVero = STRUCT([vaso,vasoPerDiff])
+origine = (MK)([0,0,0])
+puntoO = (MK)([0.1,0.1,0])
+puntoO1 = (MK)([0.1,0.15,0])
+puntoCaso1 = (MK)([0.5,0,5])
+puntoCaso2 = (MK)([0,0.5,5])
+puntoCaso3 = (MK)([0.5,0.5,5])
+puntoCaso3O = (MK)([0.56,0.56,5])
+puntoCaso3O1 = (MK)([0.58,0.56,5])
+puntoCaso4 = (MK)([1,0.5,5])
+puntoCaso5 = (MK)([0.5,1,5])
+gambo1 = JOIN([origine,puntoCaso3])
+gambo2 = JOIN([puntoO,puntoCaso3O])
+gambo3 = JOIN([puntoO1,puntoCaso3O1])
+gambo = COLOR(GREEN)(JOIN([gambo1,gambo2,gambo3]))
+
+
+
+fiore = COLOR(YELLOW)(JOIN(AA(MK)(CIRCLE_POINTS(0.4,60))))
+fioreC = COLOR(WHITE)(JOIN(AA(MK)(CIRCLE_POINTS(0.4,60))))
+fiore1 = T([1,2,3])([0.5,0,5])(fiore)
+fiore2 = T([1,2,3])([0,0.5,5])(fiore)
+fiore3 = T([1,2,3])([0.5,0.5,5])(fioreC)
+fiore4 = T([1,2,3])([1,0.5,5])(fiore)
+fiore5 = T([1,2,3])([0.5,1,5])(fiore)
+contenitore = STRUCT([vasoVero,gambo,fiore1,fiore2,fiore3,fiore4,fiore5])
+
+
+contenitori1 = T([1,2])([200,-50])(STRUCT([contenitore,T(1)(-20)]*14))
+contenitori2 = T([1,2])([200,-50])(STRUCT([contenitore,T(1)(20)]*15))
+contenitori3 = T([1,2])([200,-80])(STRUCT([contenitore,T(1)(-20)]*14))
+contenitori4 = T([1,2])([200,-80])(STRUCT([contenitore,T(1)(20)]*15))
+ 
+tuttiContenitori = STRUCT([contenitori1,contenitori2,contenitori3,contenitori4])
 
 
 
@@ -457,7 +493,8 @@ VIEW(STRUCT([pianoGenerale1,pianoGenerale2,pianoGenerale3,pianoGenerale4,
 		nuovoTempioDiPortuno,edificiDestra,edificiSinistra,stradaPrincipale,stradaPiccolaS,stradaPiccolaD,
 		primoBloccoT,secondoBloccoT,punta,vetrateT,orologioTraslato,cancelloTraslato,stradaCongiuntaT,stradaFinaleT,
 		costruzioneTetto,costruzione,fiumeCompleto,tuttiSentieri,
-		tuttiAlberi,tuttiLampioncini,tuttiLampioni,panchinaPiazzata,panchine1,panchine2,simboloRM3T,altalene]))
+		tuttiAlberi,tuttiLampioncini,tuttiLampioni,panchinaPiazzata,panchine1,panchine2,
+		simboloRM3T,altalene,tuttiContenitori]))
 
 
 
