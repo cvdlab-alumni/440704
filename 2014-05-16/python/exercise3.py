@@ -6,19 +6,9 @@ from pyplasm import *
 def merging_numbering_elimination (master, toMerge, shape, sizePattern):
 	V,CV = master
 	blocchiMaster = len(CV)-1
-	celleNuove = 1
-	listaCelleDaEliminare = []
 	scelta = []
-	listaCelleDaEliminare.append(blocchiMaster)
 	toRemove = []
-	for s in shape :
-		celleNuove = celleNuove*s
-
-
-	for celle in range(celleNuove):
-
-			blocchiMaster = blocchiMaster + 1
-			listaCelleDaEliminare.append(blocchiMaster)
+	
 
 
 	diagram = assemblyDiagramInit(shape)(sizePattern)
