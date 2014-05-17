@@ -249,9 +249,19 @@ VIEW(STRUCT([appartamentiTraslatiZ,corridoi,colonne]))
 
 
 
+
+
 #curveBezier
 
 dom = (POWER([INTERVALS(1)(30),INTERVALS(1)(30)]))
+
+controlli1 = [[-3,6.5],[-3,-1],[12.9,-1],[28.8,-1],[28.8,6.5]]
+bezierContorno1 = BEZIER(S1)(controlli1)
+controlli2 = [[-3,6.5],[-3,14],[12.9,14],[28.8,14],[28.8,6.5]]
+bezierContorno2 = BEZIER(S1)(controlli2)
+contornoTot = MAP(BEZIER(S2)([bezierContorno1,bezierContorno2]))(dom)
+contornoTotCol = COLOR([0.01,0.75,0.24])(contornoTot)
+
 
 controls1 = [[-3,6.5,0],[6.45,4.5,0],[12.9,-1,0],[19.35,4.5,0],[28.8,6.5,0]]
 bezier1 = BEZIER(S1)(controls1)
@@ -344,7 +354,10 @@ scaleComplete = STRUCT([scalaCompleta,scalaCompleta2T])
 
 
 
-VIEW(STRUCT([appartamentiTraslatiZ,corridoi,colonne,figuraCurva,contenitori1,contenitori2,contenitori3,figuraCurvaT,scaleComplete]))
+
+
+VIEW(STRUCT([appartamentiTraslatiZ,corridoi,colonne,figuraCurva,contenitori1,contenitori2,contenitori3,figuraCurvaT,scaleComplete,
+	contornoTotCol]))
 
 
 
