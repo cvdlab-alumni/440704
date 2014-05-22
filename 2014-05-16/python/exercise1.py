@@ -3,7 +3,7 @@ from lar_cc import *
 
 DRAW = COMP([VIEW,STRUCT,MKPOLS])
 
-master = assemblyDiagramInit([9,9,2])([[0.3,3.5,0.1,4,0.1,2.5,0.1,2,0.3],[0.3,1.2,0.1,1.2,0.1,0.2,0.1,1.2,0.3],[.3,2.7]])
+master = assemblyDiagramInit([9,9,2])([[0.3,3.5,0.1,4,0.1,2.5,0.1,2,0.3],[0.3,1.7,0.1,1.7,0.1,0.7,0.1,1.7,0.3],[.3,2.7]])
 V,CV = master
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering (master,hpc)(range(len(CV)),CYAN,.5)
@@ -25,7 +25,7 @@ hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,.5)
 #VIEW(hpc)
 
 toRemove = [133]
-master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
+master = master[0], [cell for k,cell in enumerate(master[1]) if not(k in toRemove)]
 #DRAW(master)
 
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
@@ -36,7 +36,7 @@ hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,.5)
 #cella della finestra
 #finesra principale
 toMerge = 57
-diagram = assemblyDiagramInit([3,1,3])([[1,2,1],[0.3],[1.3,1,0.4]])
+diagram = assemblyDiagramInit([3,1,3])([[0.5,3,0.5],[0.3],[0.3,2,0.4]])
 master = diagram2cell(diagram,master,toMerge)
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,.5)
@@ -45,8 +45,10 @@ toRemove = [139]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
-toMerge = 15
-diagram = assemblyDiagramInit([1,3,3])([[0.3],[0.2,0.6,0.2],[1.3,0.8,0.6]])
+#Da qui le altre finestre
+#sinistra
+toMerge = 30
+diagram = assemblyDiagramInit([3,1,3])([[0.4,0.4,0.4],[0.3],[1.3,0.8,0.6]])#modifico
 master = diagram2cell(diagram,master,toMerge)
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,.5)
@@ -55,7 +57,9 @@ toRemove = [146]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
-toMerge = 110
+#destra
+
+toMerge = 83
 diagram = assemblyDiagramInit([3,1,3])([[0.4,0.4,0.4],[0.3],[1.3,0.8,0.6]])
 master = diagram2cell(diagram,master,toMerge)
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
@@ -65,9 +69,9 @@ toRemove = [153]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
-
-toMerge = 113
-diagram = assemblyDiagramInit([1,3,3])([[0.3],[0.2,0.6,0.2],[1.3,0.8,0.6]])
+#destra destra
+toMerge = 109
+diagram = assemblyDiagramInit([3,1,3])([[0.4,0.4,0.4],[0.3],[1.3,0.8,0.6]]) #modifico qui
 master = diagram2cell(diagram,master,toMerge)
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,.5)
@@ -76,9 +80,10 @@ toRemove = [160]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
-#porte
+#MISURE DELLE PORTE
 
-toMerge = 21
+#in basso a sinistra
+toMerge = 22
 
 diagram = assemblyDiagramInit([3,1,2])([[2,1,.5],[.3],[2.2,.5]])
 master = diagram2cell(diagram,master,toMerge)
@@ -89,7 +94,8 @@ toRemove = [165]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
-toMerge = 23
+#in alto a sinistra
+toMerge = 24
 
 diagram = assemblyDiagramInit([3,1,2])([[0.5,1,2],[.3],[2.2,.5]])
 master = diagram2cell(diagram,master,toMerge)
@@ -100,6 +106,7 @@ toRemove = [169]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
+#in basso a destra
 toMerge = 73
 
 diagram = assemblyDiagramInit([3,1,2])([[0.5,1,2],[.3],[2.2,.5]])
@@ -111,6 +118,7 @@ toRemove = [173]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
+#in alto a destra
 toMerge = 77
 
 diagram = assemblyDiagramInit([3,1,2])([[0.5,1,2],[.3],[2.2,.5]])
@@ -122,7 +130,8 @@ toRemove = [177]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
-toMerge = 103
+#in alto a destra destra
+toMerge = 102
 
 diagram = assemblyDiagramInit([3,1,2])([[0.5,1,1.5],[.3],[2.2,.5]])
 master = diagram2cell(diagram,master,toMerge)
@@ -133,6 +142,9 @@ VIEW(hpc)
 toRemove = [181]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 DRAW(master)
+
+
+
 
 
 
