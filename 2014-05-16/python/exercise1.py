@@ -3,6 +3,9 @@ from lar_cc import *
 
 DRAW = COMP([VIEW,STRUCT,MKPOLS])
 
+def trasparente(oggetto):
+    return MATERIAL([1,1,1,0.1, 0,0,0.8,0.5, 1,1,1,0.1, 1,1,1,0.1, 100])(oggetto)
+
 master = assemblyDiagramInit([9,9,2])([[0.3,3.5,0.1,4,0.1,2.5,0.1,2,0.3],[0.3,1.7,0.1,1.7,0.1,0.7,0.1,1.7,0.3],[.3,2.7]])
 V,CV = master
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
@@ -40,10 +43,21 @@ diagram = assemblyDiagramInit([3,1,3])([[0.5,3,0.5],[0.3],[0.3,2,0.4]])
 master = diagram2cell(diagram,master,toMerge)
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,.5)
-#VIEW(hpc)
+VIEW(hpc)
+
+
+#############prova per colorare la finestra principale
+toRemove = [139]
+master2 = master[0], [cell for k,cell in enumerate(master[1]) if (k in toRemove)]
+hpc2 = trasparente((STRUCT(MKPOLS(master2))))
+VIEW(hpc2)
+#############
+
+
 toRemove = [139]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
+
 
 #Da qui le altre finestre
 #sinistra
@@ -142,6 +156,12 @@ VIEW(hpc)
 toRemove = [181]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 DRAW(master)
+
+#effetto trasparente
+hpc = STRUCT(MKPOLS(master))
+VIEW(STRUCT([hpc,hpc2]))
+
+
 
 
 

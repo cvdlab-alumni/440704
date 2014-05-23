@@ -3,6 +3,9 @@ from lar_cc import *
 
 DRAW = COMP([VIEW,STRUCT,MKPOLS])
 
+def trasparente(oggetto):
+    return MATERIAL([1,1,1,0.1, 0,0,0.8,0.5, 1,1,1,0.1, 1,1,1,0.1, 100])(oggetto)
+
 master = assemblyDiagramInit([9,9,2])([[0.3,3.5,0.1,4,0.1,2.5,0.1,2,0.3],[0.3,1.7,0.1,1.7,0.1,0.7,0.1,1.7,0.3],[.3,2.7]])
 V,CV = master
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
@@ -41,9 +44,20 @@ master = diagram2cell(diagram,master,toMerge)
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,.5)
 #VIEW(hpc)
+
+
+#############prova per colorare la finestra principale
+toRemove = [139,138]
+master2 = master[0], [cell for k,cell in enumerate(master[1]) if (k in toRemove)]
+hpc2 = trasparente((STRUCT(MKPOLS(master2))))
+#VIEW(hpc2)
+#############
+
+
 toRemove = [139]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
+
 
 #Da qui le altre finestre
 #sinistra
@@ -143,6 +157,12 @@ toRemove = [181]
 master = master[0], [cell for k,cell in enumerate(master[1]) if not (k in toRemove)]
 #DRAW(master)
 
+#effetto trasparente
+hpc = STRUCT(MKPOLS(master))
+VIEW(STRUCT([hpc,hpc2]))
+
+
+
 
 
 
@@ -209,8 +229,9 @@ appartamenti = appartamenti[0], [cell for k,cell in enumerate(appartamenti[1]) i
 
 
 hpc = (SKEL_1(STRUCT(MKPOLS(appartamenti))))
+hpc = (STRUCT(MKPOLS(appartamenti)))
 hpc = cellNumbering (appartamenti,hpc)(range(len(CV)),CYAN,2)
-#VIEW(hpc)
+VIEW(hpc)
 
 
 
@@ -456,8 +477,8 @@ balconeTND = T([1,2,3])([4.3,-0.1,5.4])(balconeND)
 
 balconeT = T([1,2,3])([4.3,-0.1,5.4])(balcone)
 
-balconi1 = T([1,2,3])([0,0,0])(STRUCT([balconeT,T(3)(3.3)]*4))
-balconi1ND = T([1,2,3])([0,0,0])(STRUCT([balconeTND,T(3)(3.3)]*4))
+balconi1 = T([1,2,3])([0,0,0])(STRUCT([balconeT,T(3)(3.15)]*4))
+balconi1ND = T([1,2,3])([0,0,0])(STRUCT([balconeTND,T(3)(3.15)]*4))
 
 balconi2ND = T([1,2,3])([0,0,0])(STRUCT([balconi1ND,T(1)(12.9)]*2))
 balconi2 = T([1,2,3])([0,0,0])(STRUCT([balconi1,T(1)(12.9)]*2))
@@ -476,12 +497,22 @@ VIEW(balconeND)
 balconiND = COLOR([1,0.75,0])(STRUCT([balconi1ND,balconi2ND,balconi3NDT,balconi4ND]))
 balconi = COLOR([1,0.75,0])(STRUCT([balconi1,balconi2,balconi3T,balconi4]))
 
+#finestre principali trasparenti
+hpc2 = T([2,3])([-4.9,5.18])(hpc2)
+finestre1 = T([1,2,3])([0,0,0])(STRUCT([hpc2,T(3)(3.2)]*4))
+finestre2 = T([1,2,3])([0,0,0])(STRUCT([finestre1,T(1)(12.9)]*2))
+finestre3 = T([1,2,3])([0,0,0])(STRUCT([finestre1,T(2)(10.6)]*2))
+finestre4 = T([1,2,3])([0,0,0])(STRUCT([finestre3,T(1)(12.9)]*2))
+
+finestre = STRUCT([finestre1,finestre2,finestre3,finestre4])
+
+
 
 
 
 VIEW(STRUCT([appartamentiTraslatiZ,corridoi,colonne,figuraCurva,contenitori1,contenitori2,contenitori3,figuraCurvaT,
 	contornoTotCol,scalaSpiraleT1,pavimentoT1,scalino,scalaSpiraleT23,pavimentoTot23,scalaSpiraleT12,pavimentoTot12,scalaSpiraleT34,
-	pavimentoTot34,pianoColoratoT,balconiND]))
+	pavimentoTot34,pianoColoratoT,balconiND,finestre]))
 
 
 
