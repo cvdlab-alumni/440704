@@ -43,14 +43,14 @@ diagram = assemblyDiagramInit([3,1,3])([[0.5,3,0.5],[0.3],[0.3,2,0.4]])
 master = diagram2cell(diagram,master,toMerge)
 hpc = SKEL_1(STRUCT(MKPOLS(master)))
 hpc = cellNumbering (master,hpc)(range(len(master[1])),CYAN,.5)
-VIEW(hpc)
+#VIEW(hpc)
 
 
 #############prova per colorare la finestra principale
 toRemove = [139]
 master2 = master[0], [cell for k,cell in enumerate(master[1]) if (k in toRemove)]
 hpc2 = trasparente((STRUCT(MKPOLS(master2))))
-VIEW(hpc2)
+#VIEW(hpc2)
 #############
 
 

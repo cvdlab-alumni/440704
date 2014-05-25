@@ -322,7 +322,7 @@ figuraCurva = COLOR(GREEN)(STRUCT([solidoBase,solidoAlto,solidoLaterale1,solidoL
 figuraCurva2 = R([1,2])(-PI/2)(figuraCurva)
 figuraCurvaT = T([1,2])([6,19])(figuraCurva2)
 
-#VIEW(figuraCurva) TERZA VIEW
+VIEW(figuraCurva)
 
 
 
@@ -410,7 +410,7 @@ pavimentoTot34 = (COLOR([1,0.54,0.41]))(STRUCT([pavimento34,pavimentoVicino34,pa
 pianoColorato = (COLOR([0.01,0.75,0.23]))(CUBOID([45,35,0]))#cambiare colore
 pianoColoratoT = T([1,2])([-12,-12])(pianoColorato)
 
-#balconcini altezza totale 1.3??
+#balconcini
 
 base = CUBOID([3.2,1.6,0.1])
 baseDaLevare = CUBOID([3,1.5,0.05])
@@ -426,6 +426,7 @@ puntiCurva1A = [[0,0,1.3],[0.2,0,1.8],[0.4,0,1.3]]
 curva1B = BEZIER(S1)(puntiCurva1B)
 curva1A = BEZIER(S1)(puntiCurva1A)
 curvaVicina1 = MAP( BEZIER(S2)([curva1B,curva1A]))(dom)
+#la parte commentata completava i balconi decorati, ma ci mette parecchio a caricare
 '''puntiCurva2B = [[0.1,0.1,1.3],[0.2,0.1,1.5],[0.3,0.1,1.3]]
 puntiCurva2A = [[0,0.1,1.3],[0.2,0.1,1.8],[0.4,0.1,1.3]]
 curva2B = BEZIER(S1)(puntiCurva2B)
@@ -443,7 +444,7 @@ baseSopraND = T(3)(1.3)(baseSopraNDDIFF)
 
 decorazione = STRUCT([gambe, curvaVicina1]) #levo dec1, dec2, curva vicina2
 decorazioni = T([1,2,3])([0,0,0])(STRUCT([decorazione,T(1)(0.4)]*8))
-decorazioneND = STRUCT([gambe]) #levo dec1, dec2, curva vicina2
+decorazioneND = STRUCT([gambe]) 
 decorazioniND = T([1,2,3])([0,0,0])(STRUCT([decorazioneND,T(1)(0.4)]*8))
 
 decorazioneR = R([1,2])(PI/2)(decorazione)
